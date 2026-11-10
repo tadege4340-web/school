@@ -1,0 +1,719 @@
+/* =====================================================
+   EduSphere Student Dashboard
+   File: admindashbord.css
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ================= ROOT VARIABLES ================= */
+
+:root {
+    --sidebar-width: 260px;
+    --header-height: 75px;
+
+    --primary-color: #0b1e33;
+    --accent-color: #3a7bd5;
+    --accent-hover: #2563eb;
+
+    --bg-light: #f4f6fb;
+    --text-dark: #172b4d;
+    --text-muted: #6c7a89;
+    --white: #ffffff;
+
+    --sidebar-text: #b8c7dc;
+    --sidebar-hover: rgba(255, 255, 255, 0.10);
+    --sidebar-border: rgba(255, 255, 255, 0.10);
+}
+
+/* ================= GLOBAL STYLES ================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    overflow: hidden;
+}
+
+/* Remove default list bullets and markers everywhere */
+
+ul,
+ol,
+li {
+    list-style: none !important;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+}
+
+li::marker {
+    content: "" !important;
+}
+
+/* ================= FIXED SIDEBAR ================= */
+
+.admin-sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    background-color: var(--primary-color);
+    color: var(--white);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    z-index: 1050;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    transition: transform 0.3s ease;
+}
+
+/* ================= SIDEBAR LOGO HEADER ================= */
+
+.sidebar-header {
+    min-height: var(--header-height);
+    height: var(--header-height);
+
+    padding: 0 1.5rem;
+
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+
+    gap: 10px;
+
+    font-size: 1.2rem;
+    font-weight: 700;
+
+    border-bottom: 1px solid var(--sidebar-border);
+
+    white-space: nowrap;
+    overflow: hidden;
+
+    list-style: none !important;
+}
+
+/* Remove unwanted bullets around the logo */
+
+.sidebar-header::before,
+.sidebar-header::after,
+.sidebar-header li::before,
+.sidebar-header li::after,
+.sidebar-header li::marker,
+.sidebar-header span::before,
+.sidebar-header span::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Graduation-cap logo */
+
+.sidebar-header > i {
+    color: #6ea8fe;
+    font-size: 1.6rem;
+    line-height: 1;
+
+    flex-shrink: 0;
+    display: inline-block;
+}
+
+/* EduSphere Student text */
+
+.sidebar-header > span {
+    color: #ffffff;
+
+    font-size: 1.15rem;
+    font-weight: 700;
+
+    margin: 0 !important;
+    padding: 0;
+
+    white-space: nowrap;
+    line-height: 1.3;
+
+    flex-shrink: 0;
+}
+
+/* Mobile close button */
+
+.sidebar-header .btn-close {
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+/* ================= SIDEBAR NAVIGATION ================= */
+
+.sidebar-nav {
+    padding: 1rem 0;
+    flex-grow: 1;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    list-style: none !important;
+}
+
+.sidebar-nav ul,
+.sidebar-nav ol,
+.sidebar-nav li {
+    list-style: none !important;
+    margin: 0;
+    padding: 0;
+}
+
+/* Remove navigation bullets */
+
+.sidebar-nav li::marker,
+.sidebar-nav li::before,
+.sidebar-nav a::before,
+.sidebar-nav a::marker {
+    content: none !important;
+    display: none !important;
+}
+
+/* Sidebar section titles */
+
+.sidebar-title {
+    color: #ffffff;
+
+    font-size: 0.95rem;
+    font-weight: 500;
+
+    padding: 0.8rem 1.5rem;
+    margin: 0;
+
+    white-space: nowrap;
+}
+
+/* Sidebar links */
+
+.sidebar-nav a {
+    color: var(--sidebar-text);
+
+    text-decoration: none !important;
+    list-style: none !important;
+
+    padding: 0.75rem 1.5rem;
+    margin: 0 10px; /* Adds gap so active state doesn't touch edges */
+    border-radius: 8px; /* Rounds the active state */
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    font-size: 0.95rem;
+    font-weight: 500;
+
+    /* REMOVED BORDER-LEFT THAT WAS CAUSING THE BULLET */
+    border: none;
+
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
+
+    white-space: nowrap;
+}
+
+/* Navigation icons */
+
+.sidebar-nav a > i {
+    width: 20px;
+    min-width: 20px;
+
+    font-size: 1.1rem;
+    text-align: center;
+
+    display: inline-block;
+}
+
+/* Hover and active links */
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+    color: #ffffff;
+    background-color: var(--sidebar-hover);
+    /* NO BORDER HERE EITHER */
+}
+
+/* ================= DROPDOWN BUTTONS ================= */
+
+.dropdown-btn {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+
+    color: var(--sidebar-text);
+
+    padding: 0.75rem 1.5rem;
+    width: 100%;
+
+    text-align: left;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    cursor: pointer;
+    white-space: nowrap;
+
+    list-style: none !important;
+
+    transition: background-color 0.2s ease;
+}
+
+/* Hide browser-generated markers */
+
+.dropdown-btn::-webkit-details-marker {
+    display: none;
+}
+
+.dropdown-btn::marker {
+    content: "";
+}
+
+.dropdown-btn:hover {
+    color: #ffffff;
+    background-color: var(--sidebar-hover);
+}
+
+.dropdown-container {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-container a {
+    padding: 0.5rem 1.5rem 0.5rem 3.5rem;
+    font-size: 0.85rem;
+    border-left: none;
+}
+
+.dropdown-container a:hover {
+    background-color: var(--sidebar-hover);
+}
+
+/* ================= MAIN CONTENT ================= */
+
+.main-content {
+    margin-left: var(--sidebar-width);
+
+    height: 100vh;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    transition: margin 0.3s ease;
+}
+
+/* ================= TOP HEADER ================= */
+
+.top-header {
+    min-height: var(--header-height);
+    height: var(--header-height);
+
+    background-color: var(--white);
+
+    padding: 0 2rem;
+
+    display: flex;
+    align-items: center;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+
+    flex-shrink: 0;
+    z-index: 1000;
+}
+
+.header-title {
+    min-width: 0;
+}
+
+.header-title h5 {
+    color: var(--text-dark);
+}
+
+.header-title small {
+    font-size: 0.78rem;
+}
+
+.header-user {
+    min-width: 0;
+}
+
+.header-user .text-end {
+    overflow: hidden;
+}
+
+.header-user .text-end span {
+    white-space: nowrap;
+}
+
+/* ================= STUDENT AVATAR ================= */
+
+.avatar {
+    width: 45px;
+    height: 45px;
+
+    background: linear-gradient(
+        135deg,
+        var(--accent-color),
+        var(--accent-hover)
+    );
+
+    color: #ffffff;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 700;
+    font-size: 1.2rem;
+
+    flex-shrink: 0;
+}
+
+/* ================= PAGE CONTENT ================= */
+
+.content-wrapper {
+    padding: 2rem;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    flex-grow: 1;
+    min-height: 0;
+}
+
+/* ================= DASHBOARD STAT CARDS ================= */
+
+.stat-card {
+    background: var(--white);
+
+    padding: 1.5rem;
+    border-radius: 1rem;
+
+    display: flex;
+    align-items: center;
+
+    gap: 1rem;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Stat card icons */
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+
+    border-radius: 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.8rem;
+
+    flex-shrink: 0;
+}
+
+/* ================= GENERAL CARDS ================= */
+
+.card {
+    border: none;
+    border-radius: 1rem;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
+}
+
+.card-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #edf0f5;
+    font-weight: 600;
+}
+
+/* ================= TABLES ================= */
+
+.table {
+    vertical-align: middle;
+}
+
+.table thead th {
+    background-color: #eef4fb;
+    color: var(--text-dark);
+
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.table tbody tr:hover {
+    background-color: #f6f9ff;
+}
+
+/* ================= BUTTONS ================= */
+
+.btn-primary {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+    border-color: var(--accent-hover);
+}
+
+/* ================= SCROLLBARS ================= */
+
+.admin-sidebar::-webkit-scrollbar,
+.sidebar-nav::-webkit-scrollbar,
+.content-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb,
+.sidebar-nav::-webkit-scrollbar-thumb,
+.content-wrapper::-webkit-scrollbar-thumb {
+    background-color: rgba(150, 170, 200, 0.45);
+    border-radius: 10px;
+}
+
+/* ================= RESPONSIVE LAYOUT ================= */
+
+@media (max-width: 991.98px) {
+    .admin-sidebar {
+        transform: translateX(-100%);
+    }
+
+    .admin-sidebar.show {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .top-header {
+        padding: 0 1rem;
+    }
+
+    .content-wrapper {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    :root {
+        --sidebar-width: 260px;
+        --header-height: 68px;
+    }
+
+    .sidebar-header {
+        padding: 0 1rem;
+    }
+
+    .sidebar-header > span {
+        font-size: 1.05rem;
+    }
+
+    .top-header {
+        padding: 0 0.75rem;
+    }
+
+    .content-wrapper {
+        padding: 1rem 0.75rem;
+    }
+
+    .stat-card {
+        padding: 1rem;
+    }
+
+    .stat-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 1.4rem;
+    }
+}
+/*footer   for ALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLAL  */
+/* ================= SITE FOOTER ================= */
+.site-footer {
+    background-color: #071929; /* Dark navy from screenshot */
+    color: #e2e8f0;
+    margin-left: var(--sidebar-width); /* Aligns with main content */
+    transition: margin 0.3s ease;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer-container {
+    padding: 4rem 2rem 2rem 2rem;
+}
+
+.site-footer h3 {
+    color: #00d2d3; /* Cyan color from screenshot */
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1.5rem;
+}
+
+.footer-desc {
+    color: #b8c7dc;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+/* Quick Links */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.footer-links li {
+    margin-bottom: 0.8rem;
+}
+.footer-links a {
+    color: #b8c7dc;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+.footer-links a:hover {
+    color: #00d2d3;
+    padding-left: 5px;
+}
+
+/* Contact Info */
+.footer-contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.footer-contact li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 1rem;
+    color: #b8c7dc;
+    font-size: 0.95rem;
+}
+.footer-contact i {
+    color: #00d2d3;
+    font-size: 1.1rem;
+    margin-top: 3px;
+}
+.footer-contact a {
+    color: #b8c7dc;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.footer-contact a:hover {
+    color: #00d2d3;
+}
+
+/* Social Icons */
+.footer-social {
+    display: flex;
+    gap: 10px;
+}
+.footer-social a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(0, 210, 211, 0.1);
+    color: #00d2d3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s;
+    border: 1px solid rgba(0, 210, 211, 0.2);
+}
+.footer-social a:hover {
+    background-color: #00d2d3;
+    color: #071929;
+    transform: translateY(-3px);
+}
+
+/* Support Button */
+.btn-support {
+    background-color: #00d2d3;
+    color: #071929;
+    font-weight: 700;
+    padding: 0.7rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s;
+    border: none;
+}
+.btn-support:hover {
+    background-color: #00b8b9;
+    color: #071929;
+    transform: translateY(-2px);
+}
+
+/* Bottom Bar */
+.footer-bottom {
+    background-color: #04101a;
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+.footer-bottom p {
+    margin: 0;
+    color: #8ba3bf;
+    font-size: 0.9rem;
+}
+.footer-bottom p:first-child {
+    margin-bottom: 5px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 991.98px) {
+    .site-footer {
+        margin-left: 0; /* Removes sidebar margin on mobile */
+    }
+    .footer-container {
+        padding: 3rem 1rem 1rem 1rem;
+    }
+}

@@ -1,0 +1,238 @@
+/* school.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root { 
+    --primary-color: #0b1e33; 
+    --accent-color: #3a7bd5; 
+    --bg-light: #f4f6fb; 
+    --text-dark: #334155; 
+}
+
+body { 
+    font-family: 'Poppins', sans-serif; 
+    background-color: var(--bg-light); 
+    color: var(--text-dark); 
+}
+
+/* --- Navbar --- */
+.navbar { 
+    background-color: var(--primary-color) !important; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+}
+.navbar-brand { 
+    font-weight: 700; 
+    color: #fff !important; 
+    font-size: 1.5rem; 
+}
+.navbar-brand i { color: #6ea8fe; }
+.nav-link { 
+    color: rgba(255,255,255,0.8) !important; 
+    font-weight: 500; 
+    transition: 0.3s; 
+}
+.nav-link:hover, .nav-link.active { 
+    color: #fff !important; 
+    transform: translateY(-2px); 
+}
+
+/* --- Hero Section --- */
+.hero { 
+    background: linear-gradient(135deg, rgba(11,30,51,0.9), rgba(58,123,213,0.8)), 
+                url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover; 
+    color: white; 
+    padding: 120px 0; 
+    text-align: center; 
+}
+.hero h1 { 
+    font-weight: 700; 
+    font-size: 3.5rem; 
+    margin-bottom: 20px; 
+    animation: fadeInDown 1s ease; 
+}
+.hero p { 
+    font-size: 1.2rem; 
+    max-width: 700px; 
+    margin: 0 auto 30px; 
+    animation: fadeInUp 1s ease; 
+}
+
+/* --- Feature Cards --- */
+.feature-card { 
+    background: #fff; 
+    border-radius: 1.5rem; 
+    padding: 2rem; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+    transition: all 0.3s ease; 
+    border: none; 
+    height: 100%; 
+}
+.feature-card:hover { 
+    transform: translateY(-10px); 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+}
+.feature-icon { 
+    font-size: 2.5rem; 
+    color: var(--accent-color); 
+    margin-bottom: 1rem; 
+}
+
+/* --- Footer --- */
+footer { 
+    background-color: var(--primary-color); 
+    color: rgba(255,255,255,0.7); 
+    padding: 3rem 0; 
+    margin-top: 5rem; 
+}
+
+/* --- Animations --- */
+@keyframes fadeInDown { 
+    from { opacity: 0; transform: translateY(-30px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
+@keyframes fadeInUp { 
+    from { opacity: 0; transform: translateY(30px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
+/*news CSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS*/
+/* --- News Cards (Add to bottom of school.css) --- */
+.news-card { 
+    background: #fff; 
+    border-radius: 1.5rem; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+    transition: all 0.3s ease; 
+    border: none; 
+    height: 100%; 
+    overflow: hidden; 
+}
+.news-card:hover { 
+    transform: translateY(-10px); 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+}
+.news-card img { 
+    height: 200px; 
+    object-fit: cover; 
+    width: 100%; 
+}
+/* Style for the "Read More" button */
+.btn-read-more {
+    background-color: transparent;
+    color: var(--accent-color);
+    font-weight: 600;
+    border: none;
+    padding: 0;
+    transition: 0.3s;
+}
+.btn-read-more:hover {
+    color: var(--primary-color);
+    transform: translateX(5px); /* Slight movement on hover */
+}
+/*contact USSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS*/
+/* ==========================================
+   CONTACT US PAGE (Pasted at bottom)
+   ========================================== */
+
+/* Contact Header */
+.contact-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeInDown 1s ease;
+}
+.contact-header h1 {
+    font-weight: 700;
+    color: var(--primary-color);
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+}
+.contact-header .subhead {
+    color: #64748b;
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+/* Contact Grid Layout */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+/* Individual Contact Item */
+.contact-item {
+    background: #fff;
+    border-radius: 1.2rem;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    border: 1px solid #f1f5f9;
+    transition: all 0.3s ease;
+}
+.contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    border-color: var(--accent-color);
+}
+
+/* Contact Icon */
+.contact-icon {
+    width: 55px;
+    height: 55px;
+    background: var(--bg-light);
+    color: var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    transition: 0.3s;
+}
+.contact-item:hover .contact-icon {
+    background: var(--accent-color);
+    color: #fff;
+}
+
+/* Contact Text */
+.contact-detail {
+    display: flex;
+    flex-direction: column;
+}
+.contact-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #94a3b8;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+.contact-value a {
+    color: var(--text-dark);
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: 0.2s;
+}
+.contact-value a:hover {
+    color: var(--accent-color);
+}
+
+/* Contact Footer Text */
+.contact-footer {
+    text-align: center;
+    color: #64748b;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.contact-footer i {
+    color: #ef4444; /* Red heart */
+}
