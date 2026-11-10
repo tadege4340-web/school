@@ -1,4 +1,4 @@
-```php
+
 <?php include 'header.php'; ?>
 <?php require 'db.php'; ?>
 
@@ -257,4 +257,3 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <?php include 'footer.php'; ?>
-```
