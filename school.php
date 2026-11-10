@@ -1,5 +1,8 @@
 <?php
 // school.php - Single Page Application (Home, News)
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,19 +32,15 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <!-- Home (Stays on page) -->
                     <li class="nav-item">
                         <a class="nav-link active" href="#" id="link-home" onclick="showPage('home')">Home</a>
                     </li>
-                    <!-- News (Stays on page) -->
                     <li class="nav-item">
                         <a class="nav-link" href="#" id="link-news" onclick="showPage('news')">News</a>
                     </li>
-                    <!-- Contact Us (Goes to contactus.php file) -->
                     <li class="nav-item">
                         <a class="nav-link" href="contactus.php">Contact Us</a>
                     </li>
-                    <!-- Login (Goes to loginf.php file) -->
                     <li class="nav-item ms-lg-3">
                         <a class="btn btn-outline-light rounded-pill px-4" href="loginf.php">Login</a>
                     </li>
@@ -138,117 +137,13 @@
             </div>
         </div>
     </div>
-    <?php
-// login_instructions.php
-if (session_status() === PHP_SESSION_NONE) { session_start(); }
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Login Guide • EduSphere</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <style>
-        body { background-color: #f4f6fb; font-family: 'Poppins', sans-serif; }
-        .instruction-card { background: #fff; border-radius: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05); padding: 3rem; }
-        .header-icon { font-size: 3rem; color: #3a7bd5; margin-bottom: 1rem; }
-        .table-custom th { background-color: #0b1e33; color: white; font-weight: 500; }
-        .table-custom td { vertical-align: middle; }
-    </style>
-</head>
-<body>
 
-<div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-10">
-            <div class="instruction-card">
-                
-                <!-- Header -->
-                <div class="text-center mb-5">
-                    <i class="bi bi-mortarboard-fill header-icon"></i>
-                    <h2 class="fw-bold text-primary mb-3">📢 Welcome to EduSphere Academy!</h2>
-                    <p class="text-muted fs-5">Student Portal Guide (Grades 9 - 12)</p>
-                </div>
-
-                <!-- Information List -->
-                <div class="alert alert-info rounded-4 mb-5" style="border-left: 5px solid #3a7bd5;">
-                    <h5 class="fw-bold mb-3"><i class="bi bi-info-circle-fill me-2"></i>This system allows students to access:</h5>
-                    <ul class="mb-0">
-                        <li>All enrolled courses for their specific Grade and Stream (Natural/Social).</li>
-                        <li>Academic Status — detailed exam results and grade reports.</li>
-                        <li>Attendance and school-related announcements.</li>
-                        <li>Other important academic information.</li>
-                    </ul>
-                </div>
-
-                <!-- Login Guideline -->
-                <h4 class="fw-bold text-dark mb-3">🔐 Login Guideline</h4>
-                <p class="text-muted">
-                    To view your academic details, you must first login. The login link is located on the main page. 
-                    When the login screen is displayed, you must enter your <strong>Student ID</strong> and your <strong>Default Password</strong>.
-                </p>
-                <p class="text-muted mb-4">
-                    Refer to the following example table on how to use your ID number as your username and your initial password.
-                </p>
-
-                <!-- Example Table -->
-                <div class="table-responsive mb-4">
-                    <table class="table table-bordered table-hover table-custom rounded-3">
-                        <thead>
-                            <tr>
-                                <th class="ps-3">Student Full Name</th>
-                                <th>Student ID (Username)</th>
-                                <th>Temporary Password</th>
-                                <th>Remark</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="ps-3 fw-bold">Tadege Yilkal Melaku</td>
-                                <td><span class="badge bg-primary fs-6">STU-2026-001</span></td>
-                                <td><code class="text-danger fw-bold">student123</code></td>
-                                <td class="text-muted">All characters in the password are lowercase.</td>
-                            </tr>
-                            <tr>
-                                <td class="ps-3 fw-bold">Abebe Kebede Tesfaye</td>
-                                <td><span class="badge bg-primary fs-6">STU-2026-002</span></td>
-                                <td><code class="text-danger fw-bold">student123</code></td>
-                                <td class="text-muted">Same default password for everyone.</td>
-                            </tr>
-                            <tr>
-                                <td class="ps-3 fw-bold">Sara Yohannes Mekonnen</td>
-                                <td><span class="badge bg-primary fs-6">STU-2026-003</span></td>
-                                <td><code class="text-danger fw-bold">student123</code></td>
-                                <td class="text-muted">Change password after first login.</td>
-                            </tr>
-                            <tr>
-                                <td class="ps-3 fw-bold">Dawit Tadesse Alemu</td>
-                                <td><span class="badge bg-primary fs-6">STU-2026-004</span></td>
-                                <td><code class="text-danger fw-bold">student123</code></td>
-                                <td class="text-muted">Contact admin if you face issues.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Action Button -->
-                <div class="text-center mt-5">
-                    <a href="loginf.php" class="btn btn-primary btn-lg px-5 py-3 rounded-pill fw-bold" style="background-color: #0b1e33;">
-                        <i class="bi bi-box-arrow-in-right me-2"></i> Go to Login Page
-                    </a>
-                </div>
-
-            </div>
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <h4 class="text-white mb-3">EduSphere Academy</h4>
+            <p>&copy; <?= date('Y') ?> EduSphere. All rights reserved.</p>
         </div>
-    </div>
-</div>
-
-</body>
-</html>
-
-    
     </footer>
 
     <!-- Bootstrap JS -->
@@ -273,11 +168,3 @@ if (session_status() === PHP_SESSION_NONE) { session_start(); }
     </script>
 </body>
 </html>
-<?php
-// footer.php
-?>
-        </div> <!-- Close content-wrapper -->
-    </div> <!-- Close main-content -->
-
-    <!-- Include the Universal Footer -->
-    <?php include 'footerall.php'; ?>
