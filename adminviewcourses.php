@@ -1,21 +1,19 @@
 <?php 
-// 1. Require DB and start session FIRST
-require 'db.php'; 
-
-// 2. Then load the header
+// 1. Include the header FIRST. 
+// The header already handles session_start() and requires db.php.
 include 'header.php'; 
 
 // ======================
 // ADMIN CHECK
 // ======================
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    echo "<p style='color:red; font-weight:bold; text-align:center;'>Only admin can view courses.</p>";
+    echo "<p style='color:red; font-weight:bold; text-align:center; padding: 20px;'>Only admin can view courses.</p>";
     include 'footer.php';
     exit();
 }
 
 $message = "";
-$message_type = "error";
+$message_type = "";
 
 // ======================
 // HANDLE DELETE (PDO)
@@ -33,12 +31,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['delete_id'])) {
                 $message_type = "success";
             } else {
                 $message = "No course found with this ID.";
+                $message_type = "danger";
             }
         } catch (PDOException $e) {
             $message = "Database error: " . $e->getMessage();
+            $message_type = "danger";
         }
     } else {
         $message = "Invalid Course ID.";
+        $message_type = "danger";
     }
 }
 
@@ -73,7 +74,7 @@ try {
 
         <!-- Messages -->
         <?php if ($message !== ''): ?>
-            <div class="alert alert-<?= $message_type === 'success' ? 'success' : 'danger' ?> rounded-3">
+            <div class="alert alert-<?= $message_type ?> rounded-3">
                 <i class="bi bi-<?= $message_type === 'success' ? 'check-circle-fill' : 'x-circle-fill' ?> me-2"></i>
                 <?= htmlspecialchars($message) ?>
             </div>
@@ -153,29 +154,21 @@ try {
                                         </td>
 
                                         <td class="text-end pe-4">
-
-                                            <!-- Update Link -->
                                             <a href="adminupdatecourse.php?id=<?= $row['id'] ?>"
                                                class="btn btn-sm btn-light text-warning"
                                                title="Edit">
                                                 <i class="bi bi-pencil"></i>
                                             </a>
 
-                                            <!-- Delete Form -->
                                             <form method="POST" style="display:inline-block; margin:0;">
-
-                                                <input type="hidden" name="delete_id"
-                                                       value="<?= $row['id'] ?>">
-
+                                                <input type="hidden" name="delete_id" value="<?= $row['id'] ?>">
                                                 <button type="submit"
                                                         onclick="return confirm('Are you sure you want to delete this course?');"
                                                         class="btn btn-sm btn-light text-danger"
                                                         title="Delete">
                                                     <i class="bi bi-trash"></i>
                                                 </button>
-
                                             </form>
-
                                         </td>
                                     </tr>
 
@@ -183,20 +176,11 @@ try {
 
                             <?php else: ?>
 
-                                <!-- RED NO COURSES FOUND MESSAGE -->
                                 <tr>
                                     <td colspan="5" class="text-center py-5">
-
                                         <i class="bi bi-exclamation-circle-fill fs-1 d-block mb-3 text-danger"></i>
-
-                                        <h5 class="text-danger fw-bold">
-                                            No Courses Found!
-                                        </h5>
-
-                                        <p class="text-danger mb-0">
-                                            There are currently no courses available in the system.
-                                        </p>
-
+                                        <h5 class="text-danger fw-bold">No Courses Found!</h5>
+                                        <p class="text-danger mb-0">There are currently no courses available in the system.</p>
                                     </td>
                                 </tr>
 
@@ -215,18 +199,15 @@ try {
 <!-- JavaScript for Live Search & Filter -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-
     const searchInput = document.getElementById('searchInput');
     const gradeFilter = document.getElementById('gradeFilter');
     const tableRows = document.querySelectorAll('#courseTable tbody tr');
 
     function filterTable() {
-
         const searchText = searchInput.value.toLowerCase();
         const selectedGrade = gradeFilter.value;
 
         tableRows.forEach(row => {
-
             if (row.cells.length < 5) return;
 
             const codeText = row.cells[0].textContent.toLowerCase();
@@ -234,27 +215,19 @@ document.addEventListener('DOMContentLoaded', function() {
             const streamText = row.cells[3].textContent.toLowerCase();
             const gradeText = row.cells[2].textContent.trim();
 
-            const matchesSearch =
-                codeText.includes(searchText) ||
-                nameText.includes(searchText) ||
-                streamText.includes(searchText);
-
-            const matchesGrade =
-                (selectedGrade === 'all') ||
-                gradeText.includes(selectedGrade);
+            const matchesSearch = codeText.includes(searchText) || nameText.includes(searchText) || streamText.includes(searchText);
+            const matchesGrade = (selectedGrade === 'all') || gradeText.includes(selectedGrade);
 
             if (matchesSearch && matchesGrade) {
                 row.style.display = '';
             } else {
                 row.style.display = 'none';
             }
-
         });
     }
 
     searchInput.addEventListener('input', filterTable);
     gradeFilter.addEventListener('change', filterTable);
-
 });
 </script>
 
