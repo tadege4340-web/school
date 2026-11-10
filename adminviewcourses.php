@@ -1,8 +1,10 @@
+<?php 
+// 1. Require DB and start session FIRST
+require 'db.php'; 
 
-<?php include 'header.php'; ?>
-<?php require 'db.php'; ?>
+// 2. Then load the header
+include 'header.php'; 
 
-<?php
 // ======================
 // ADMIN CHECK
 // ======================
