@@ -1,5 +1,5 @@
 <?php
-// school.php - Single Page Application (Home, News)
+// school.php - Single Page Application (Home, Info)
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -9,7 +9,7 @@ if (session_status() === PHP_SESSION_NONE) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduSphere - School Management</title>
+    <title>EduSphere - Secondary School Management</title>
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,6 +18,17 @@ if (session_status() === PHP_SESSION_NONE) {
     
     <!-- YOUR SEPARATE CSS FILE -->
     <link rel="stylesheet" href="school.css">
+    
+    <!-- Custom styles for the new sections -->
+    <style>
+        .info-section { background: #fff; border-radius: 1.5rem; padding: 2.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 2rem; height: 100%; }
+        .info-title { color: #0b1e33; font-weight: 700; border-bottom: 3px solid #3a7bd5; padding-bottom: 10px; margin-bottom: 20px; display: inline-block; }
+        .list-group-custom .list-group-item { border: none; border-bottom: 1px solid #f1f5f9; padding: 12px 0; background: transparent; }
+        .list-group-custom .list-group-item:last-child { border-bottom: none; }
+        .table-custom th { background-color: #0b1e33; color: white; font-weight: 500; }
+        .table-custom td { vertical-align: middle; }
+        .login-guide-box { background: #f8fafc; border-left: 5px solid #3a7bd5; padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem; }
+    </style>
 </head>
 <body>
 
@@ -36,7 +47,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         <a class="nav-link active" href="#" id="link-home" onclick="showPage('home')">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" id="link-news" onclick="showPage('news')">News</a>
+                        <a class="nav-link" href="#" id="link-info" onclick="showPage('info')">School Info & Login Guide</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contactus.php">Contact Us</a>
@@ -70,7 +81,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         <div class="feature-card text-center">
                             <i class="bi bi-book-half feature-icon"></i>
                             <h4>Modern Curriculum</h4>
-                            <p class="text-muted">Tailored for Grades 9-12, focusing on Science, Arts, and Business streams.</p>
+                            <p class="text-muted">Tailored for Grades 9-12, focusing on Natural and Social Science streams.</p>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -92,45 +103,94 @@ if (session_status() === PHP_SESSION_NONE) {
         </section>
     </div>
 
-    <!-- ================= 2. NEWS SECTION ================= -->
-    <div id="section-news" style="display: none;">
+    <!-- ================= 2. INFO & LOGIN GUIDE SECTION ================= -->
+    <div id="section-info" style="display: none;">
         <div class="container py-5 mt-4">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold">Latest School News</h2>
-                <p class="text-muted">Stay updated with what's happening at EduSphere Academy.</p>
-            </div>
             
+            <!-- Intro -->
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-primary">Secondary School Information System</h2>
+                <p class="text-muted fs-5">Manage academic records, courses, and grades for Grades 9 through 12.</p>
+            </div>
+
             <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <div class="news-card">
-                        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Graduation">
-                        <div class="p-4">
-                            <span class="badge bg-primary mb-2">Events</span>
-                            <h5 class="fw-bold">Grade 12 Graduation Ceremony</h5>
-                            <p class="text-muted small mb-4">Join us in celebrating the Class of 2026 on June 15th at the main auditorium.</p>
-                            <button class="btn-read-more">Read More <i class="bi bi-arrow-right"></i></button>
-                        </div>
+                <!-- Left Column: Academic Structure -->
+                <div class="col-lg-6">
+                    <div class="info-section">
+                        <h4 class="info-title"><i class="bi bi-building me-2"></i>Academic Structure</h4>
+                        
+                        <h6 class="fw-bold mt-4 text-dark">📚 Grade Levels & Streams</h6>
+                        <ul class="list-group list-group-custom">
+                            <li class="list-group-item"><i class="bi bi-check2-circle text-primary me-2"></i><strong>Grade 9 & 10:</strong> General Secondary Education</li>
+                            <li class="list-group-item"><i class="bi bi-check2-circle text-primary me-2"></i><strong>Grade 11 & 12:</strong> Natural Science Stream</li>
+                            <li class="list-group-item"><i class="bi bi-check2-circle text-primary me-2"></i><strong>Grade 11 & 12:</strong> Social Science Stream</li>
+                        </ul>
+
+                        <h6 class="fw-bold mt-4 text-dark">📖 Core Subjects</h6>
+                        <ul class="list-group list-group-custom">
+                            <li class="list-group-item"><i class="bi bi-dot text-secondary"></i>Mathematics</li>
+                            <li class="list-group-item"><i class="bi bi-dot text-secondary"></i>English</li>
+                            <li class="list-group-item"><i class="bi bi-dot text-secondary"></i>Physics</li>
+                            <li class="list-group-item"><i class="bi bi-dot text-secondary"></i>Chemistry</li>
+                            <li class="list-group-item"><i class="bi bi-dot text-secondary"></i>Biology</li>
+                            <li class="list-group-item"><i class="bi bi-dot text-secondary"></i>History</li>
+                            <li class="list-group-item"><i class="bi bi-dot text-secondary"></i>Geography</li>
+                            <li class="list-group-item"><i class="bi bi-dot text-secondary"></i>Civics</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="news-card">
-                        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Science Fair">
-                        <div class="p-4">
-                            <span class="badge bg-success mb-2">Academics</span>
-                            <h5 class="fw-bold">Annual Science & Arts Fair</h5>
-                            <p class="text-muted small mb-4">Grade 9 and 10 students showcased amazing projects in our recent science fair.</p>
-                            <button class="btn-read-more">Read More <i class="bi bi-arrow-right"></i></button>
+
+                <!-- Right Column: Login Guide -->
+                <div class="col-lg-6">
+                    <div class="info-section">
+                        <h4 class="info-title"><i class="bi bi-shield-lock-fill me-2"></i>Student Login Guide</h4>
+                        
+                        <div class="login-guide-box">
+                            <p class="text-muted mb-2">
+                                To view your academic details, you must first login. The login link is located in the top navigation bar.
+                            </p>
+                            <p class="text-muted mb-2">
+                                When the login screen is displayed, enter your <strong>Student ID</strong> as the username and your <strong>Default Password</strong> as the initial password.
+                            </p>
+                            <p class="text-danger small fw-bold mb-0">
+                                ⚠️ Important: Upon first login, you will be required to change your temporary password. The new password must be at least 7 characters long.
+                            </p>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="news-card">
-                        <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sports">
-                        <div class="p-4">
-                            <span class="badge bg-warning text-dark mb-2">Sports</span>
-                            <h5 class="fw-bold">Inter-School Football Championship</h5>
-                            <p class="text-muted small mb-4">Our varsity team secured first place in the regional championship last weekend.</p>
-                            <button class="btn-read-more">Read More <i class="bi bi-arrow-right"></i></button>
+
+                        <h6 class="fw-bold mb-3">Example Accounts</h6>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-custom rounded-3">
+                                <thead>
+                                    <tr>
+                                        <th>Student Name</th>
+                                        <th>Username (ID)</th>
+                                        <th>Temporary Password</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="fw-bold">Amanuel Aman</td>
+                                        <td><span class="badge bg-primary">3232</span></td>
+                                        <td><code class="text-danger fw-bold">student123</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">Demeke Tadele</td>
+                                        <td><span class="badge bg-primary">1501088</span></td>
+                                        <td><code class="text-danger fw-bold">student123</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">Bereberew Gudie</td>
+                                        <td><span class="badge bg-primary">13333</span></td>
+                                        <td><code class="text-danger fw-bold">student123</code></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <a href="loginf.php" class="btn btn-primary px-4 py-2 rounded-pill fw-bold" style="background-color: #0b1e33;">
+                                <i class="bi bi-box-arrow-in-right me-2"></i> Go to Login Page
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -139,7 +199,7 @@ if (session_status() === PHP_SESSION_NONE) {
     </div>
 
     <!-- ================= PROFESSIONAL FOOTER ================= -->
-    <footer class="site-footer">
+    <footer class="site-footer mt-0">
         <div class="container footer-container">
             
             <div class="row g-4">
@@ -164,10 +224,8 @@ if (session_status() === PHP_SESSION_NONE) {
                     <ul class="footer-links">
                         <li><a href="school.php">Home</a></li>
                         <li><a href="contactus.php">Contact Us</a></li>
-                        <li><a href="#">News & Events</a></li>
+                        <li><a href="#" onclick="showPage('info')">School Info</a></li>
                         <li><a href="loginf.php">Student Login</a></li>
-                        <li><a href="#">Academic Calendar</a></li>
-                        <li><a href="#">FAQs</a></li>
                     </ul>
                 </div>
 
@@ -181,19 +239,11 @@ if (session_status() === PHP_SESSION_NONE) {
                         </li>
                         <li>
                             <i class="bi bi-telephone-fill"></i> 
-                            <span><a href="tel:0928293370">0928293370</a> / <a href="tel:0918169491">0918169491</a></span>
+                            <span><a href="tel:0928293370">0928293370</a></span>
                         </li>
                         <li>
                             <i class="bi bi-envelope-fill"></i> 
                             <span><a href="mailto:tadege4340@gmail.com">tadege4340@gmail.com</a></span>
-                        </li>
-                        <li>
-                            <i class="bi bi-envelope-open-fill"></i> 
-                            <span><a href="mailto:tadegeyilkal@gmail.com">tadegeyilkal@gmail.com</a></span>
-                        </li>
-                        <li>
-                            <i class="bi bi-telegram"></i> 
-                            <span><a href="https://t.me/tadege2123" target="_blank">@tadege2123</a></span>
                         </li>
                     </ul>
                 </div>
@@ -221,21 +271,24 @@ if (session_status() === PHP_SESSION_NONE) {
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- JAVASCRIPT TO SWITCH PAGES INSTANTLY (Home, News) -->
+    <!-- JAVASCRIPT TO SWITCH PAGES INSTANTLY -->
     <script>
         function showPage(pageId) {
             // 1. Hide all sections
             document.getElementById('section-home').style.display = 'none';
-            document.getElementById('section-news').style.display = 'none';
+            document.getElementById('section-info').style.display = 'none';
             
             // 2. Show the selected section
             document.getElementById('section-' + pageId).style.display = 'block';
 
             // 3. Update active link styling in Navbar
             document.getElementById('link-home').classList.remove('active');
-            document.getElementById('link-news').classList.remove('active');
+            document.getElementById('link-info').classList.remove('active');
             
             document.getElementById('link-' + pageId).classList.add('active');
+
+            // Scroll to top when switching
+            window.scrollTo(0, 0);
         }
     </script>
 </body>
