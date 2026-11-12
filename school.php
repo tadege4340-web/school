@@ -306,7 +306,8 @@ if (session_status() === PHP_SESSION_NONE) {
                         <a href="https://t.me/tadege2123" target="_blank" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
                         <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
                         <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
-                        <a href="mailto:tadege4340@gmail.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                        <!-- Updated Gmail Link -->
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=tadege4340@gmail.com" target="_blank" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
                     </div>
                 </div>
 
@@ -331,9 +332,10 @@ if (session_status() === PHP_SESSION_NONE) {
                             <i class="bi bi-telephone-fill"></i> 
                             <span><a href="tel:0928293370">0928293370</a> / <a href="tel:0918169491">0918169491</a></span>
                         </li>
+                        <!-- Updated Gmail Link -->
                         <li>
                             <i class="bi bi-envelope-fill"></i> 
-                            <span><a href="mailto:tadege4340@gmail.com">tadege4340@gmail.com</a></span>
+                            <span><a href="https://mail.google.com/mail/?view=cm&fs=1&to=tadege4340@gmail.com" target="_blank">tadege4340@gmail.com</a></span>
                         </li>
                         <li>
                             <i class="bi bi-facebook"></i> 
